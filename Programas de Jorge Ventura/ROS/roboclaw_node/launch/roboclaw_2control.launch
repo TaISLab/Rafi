@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Roboclaw Motor Controller parameters -->
+    <arg name="dev" default="/dev/ttyACM0"/>
+    <arg name="dev2" default="/dev/ttyACM1"/>
+    <arg name="baud" default="115200"/>
+    <arg name="address" default="128"/>
+    <arg name="address2" default="129"/>
+    <arg name="direction" default="0"/>
+    <arg name="direction2" default="1"/>
+    <arg name="max_speed" default="4.0"/>
+    <arg name="ticks_per_meter" default="13528.17"/>
+    <arg name="base_width" default="0.41"/>
+    <arg name="run_diag" default="true"/>
+    
+    <!-- Roboclaw Node 1 -->
+    <node if="$(arg run_diag)" pkg="roboclaw_node" type="roboclaw_node2.py" name="roboclaw_node">
+        <param name="~dev" value="$(arg dev)"/>
+        <param name="~direction" value="$(arg direction)"/>
+        <param name="~baud" value="$(arg baud)"/>
+        <param name="~address" value="$(arg address)"/>
+        <param name="~max_speed" value="$(arg max_speed)"/>
+        <param name="~ticks_per_meter" value="$(arg ticks_per_meter)"/>
+        <param name="~base_width" value="$(arg base_width)"/>
+    </node>
+
+    <!-- Roboclaw Node 2 -->
+    <node if="$(arg run_diag)" pkg="roboclaw_node" type="roboclaw_node2.py" name="roboclaw_node2">
+        <param name="~dev" value="$(arg dev2)"/>
+        <param name="~direction" value="$(arg direction2)"/>
+        <param name="~baud" value="$(arg baud)"/>
+        <param name="~address" value="$(arg address2)"/>
+        <param name="~max_speed" value="$(arg max_speed)"/>
+        <param name="~ticks_per_meter" value="$(arg ticks_per_meter)"/>
+        <param name="~base_width" value="$(arg base_width)"/>
+    </node>
+
+    <!-- Diagnostic Node -->
+    <node pkg="diagnostic_aggregator" type="aggregator_node"
+          name="diagnostic_aggregator">
+        <rosparam command="load"
+                  file="$(find roboclaw_node)/config/roboclaw_diag.yaml"/>
+    </node>
+
+    <!-- Joy node -->
+    <node respawn="true" pkg="joy"
+        type="joy_node" name="roboclaw_joy" >
+    	<param name="dev" type="string" value="/dev/input/js4" />
+    	<param name="deadzone" value="0.12" />
+    </node>
+
+    <!-- Conection Node -->
+    <node pkg="learning_joy" type="Joy2Roboclaw.py" name="teleop"/>
+
+</launch>

@@ -1,0 +1,14 @@
+<launch>
+ <!-- Turtlesim Node-->
+  <node pkg="turtlesim" type="turtlesim_node" name="sim"/>
+
+ <!-- joy node -->
+  <node respawn="true" pkg="joy"
+        type="joy_node" name="turtle_joy" >
+    <param name="dev" type="string" value="/dev/input/js4" />
+    <param name="deadzone" value="0.12" />
+  </node>
+
+ <!-- Conection Node -->
+  <node pkg="learning_joy" type="Joy2Turtle.py" name="teleop"/>
+</launch>
