@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<launch>
+<!--Roboclaw Motor Controller Parameters-->
+    <arg name="dev1" default="/dev/ttyACM0"/>
+    <arg name="dev2" default="/dev/ttyACM1"/>
+    <arg name="baud" default="115200"/>
+    <arg name="address1" default="128"/>
+    <arg name="address2" default="129"/>
+    <arg name="max_speed" default="0.8"/>
+    <arg name="ticks_per_meter" default="4500"/>
+    <arg name="base_width" default="0.4223"/>
+    <arg name="cmd_frequency" default="20"/>
+
+<!--Roboclaw Node-->
+    <node pkg="roboclaw_node" type="roboclaw_node.py" name="roboclaw_node" output="screen">
+        <param name="~dev1" value="$(arg dev1)"/>
+        <param name="~dev2" value="$(arg dev2)"/>
+        <param name="~baud" value="$(arg baud)"/>
+        <param name="~address1" value="$(arg address1)"/>
+        <param name="~address2" value="$(arg address2)"/>
+        <param name="~max_speed" value="$(arg max_speed)"/>
+        <param name="~ticks_per_meter" value="$(arg ticks_per_meter)"/>
+        <param name="~base_width" value="$(arg base_width)"/>
+        <param name="~cmd_frequency" value="$(arg cmd_frequency)"/>
+    </node>
+
+
+    <node pkg="diagnostic_aggregator" type="aggregator_node"
+          name="diagnostic_aggregator">
+        <rosparam command="load"
+                  file="$(find roboclaw_node)/config/roboclaw_diag.yaml"/>
+    </node>
+
+</launch>
