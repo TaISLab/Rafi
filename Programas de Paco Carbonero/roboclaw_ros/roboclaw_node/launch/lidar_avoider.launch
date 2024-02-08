@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+<!--Lidar Avoider Parameters-->
+   <arg name="range_min" default="-30"/>
+   <arg name="range_max" default="30"/>
+   <arg name="umbral" default="1.5"/>
+   <arg name="lin_x" default="-0.2"/>
+   <arg name="lin_y" default="0"/>
+   <arg name="ang_z" default="0"/>
+     
+    
+
+<!--Lidar Avoider Node-->
+    <node pkg="roboclaw_node" type="lidar_avoider.py" name="lidar_avoider_node" output="screen">
+       <param name="~range_min" value="$(arg range_min)"/>
+       <param name="~range_max" value="$(arg range_max)"/>
+       <param name="~umbral" value="$(arg umbral)"/>
+       <param name="~lin_x" value="$(arg lin_x)"/>
+       <param name="~lin_y" value="$(arg lin_y)"/>
+       <param name="~ang_z" value="$(arg ang_z)"/>
+  
+    </node>
+
+</launch>
