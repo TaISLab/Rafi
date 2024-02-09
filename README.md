@@ -1,22 +1,48 @@
-For use this software, you will need to create a workspace,
-and then copy this folders into the src folder and build.
+## Software Setup Instructions
 
-Then install the following packages:  
-  sudo apt install ros-noetic-teleop-twist-joy  
-  sudo apt-get install ros-kinetic-hector-slam  
-  sudo apt install python3-serial  
-  
-And for launching all the modules: roslaunch roboclaw_node launch_all.launch  
-  
-If you are facing these problems: AttributeError: Roboclaw instance has no attribute '_port' or Unable to read version  
-try:  
-  sudo adduser <USER> dialout  
-or:  
-  sudo chmod 666 /dev/ttyACM0  
-  sudo chmod 666 /dev/ttyACM1  
-  
-If it keeps failing try BasicMicroMotion Studio software (Windows) to check the addresses and configurations.  
-  
-If you want to change parameters, you can change it the launch_all.launch file (ws/src/roboclaw_ros/roboclaw_node/launch/)  
-  
-DO NOT FORGET TO SOURCE THE BASH: source devel/setup.bash every time you open a new bash  
+1. **Create Workspace:**
+   - Create a workspace for the software.
+
+2. **Copy Folders:**
+   - Copy the provided folders into the `src` folder of the workspace.
+
+3. **Build:**
+   - Build the workspace.
+
+4. **Install Packages:**
+   - Install the following packages:
+     ```bash
+     sudo apt install ros-noetic-teleop-twist-joy
+     sudo apt-get install ros-kinetic-hector-slam
+     sudo apt install python3-serial
+     ```
+
+5. **Launch Modules:**
+   - Launch all the modules using the command:
+     ```bash
+     roslaunch roboclaw_node launch_all.launch
+     ```
+
+6. **Troubleshooting:**
+   - If encountering errors like `AttributeError: Roboclaw instance has no attribute '_port'` or `Unable to read version`, try:
+     ```bash
+     sudo adduser <USER> dialout
+     ```
+     or
+     ```bash
+     sudo chmod 666 /dev/ttyACM0
+     sudo chmod 666 /dev/ttyACM1
+     ```
+
+7. **Further Troubleshooting:**
+   - If issues persist, consider using BasicMicroMotion Studio software (Windows) to verify addresses and configurations.
+
+8. **Parameter Configuration:**
+   - To change parameters, modify the `launch_all.launch` file located at `ws/src/roboclaw_ros/roboclaw_node/launch/`.
+
+9. **Source Bash:**
+   - Always remember to source the bash by running:
+     ```bash
+     source devel/setup.bash
+     ```
+     every time you open a new bash session.
