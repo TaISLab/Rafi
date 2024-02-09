@@ -1,7 +1,7 @@
 ## Software Setup Instructions
 
 1. **Create Workspace:**
-   - Create a workspace for the software.
+   - Create a ROS workspace for the software (ROS NOETIC).
 
 2. **Copy Folders:**
    - Copy the provided folders into the `src` folder of the workspace.
