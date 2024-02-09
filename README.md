@@ -1,8 +1,8 @@
 For use this software, you will need to create a workspace,
 and then copy this folders into the src folder and build.
 
-Then install the following packages:
-  sudo apt install ros-noetic-teleop-twist-joy
+Then install the following packages:  
+  sudo apt install ros-noetic-teleop-twist-joy  
   sudo apt-get install ros-kinetic-hector-slam
   sudo apt install python3-serial
 
