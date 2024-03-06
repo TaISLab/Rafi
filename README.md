@@ -13,7 +13,7 @@
    - Install the following packages:
      ```bash
      sudo apt install ros-noetic-teleop-twist-joy
-     sudo apt-get install ros-kinetic-hector-slam
+     sudo apt-get install ros-noetic-hector-slam
      sudo apt install python3-serial
      ```
 
