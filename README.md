@@ -16,8 +16,14 @@
      sudo apt-get install ros-noetic-hector-slam
      sudo apt install python3-serial
      ```
+5. **Activate LiDAR:**
+   - The LiDAR folder is based on this blog https://archit0994.wixsite.com/architshah/post/manage-your-blog-from-your-live-site. So in order to activate the port you should follow the next steps after building it:
+  
+      - Add the ydlidar environment variable to the ~/.bashrc file and make it effective.
 
-5. **Launch Modules:**
+      - Add a device alias /dev/ydlidar to the X4 serial port.
+
+6. **Launch Modules:**
    - Run roscore in a new bash:
      ```bash
      roscore
