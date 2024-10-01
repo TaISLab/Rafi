@@ -1,5 +1,5 @@
 # RAFI
-Rodrigo Castro Ochoa
+Aportaciones del TFG de Rodrigo Castro Ochoa: Desarrollo de una interfaz software para el control de un manipulador móvil con ruedas omnidireccionales
 
 ## Red inalámbrica del laboratorio 3.506LII:
 Credenciales de acceso:
